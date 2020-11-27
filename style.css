@@ -1,0 +1,74 @@
+#kontener
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 800px;
+	margin: 0 auto;
+	border: 1px solid black;
+	text-align:center;
+	padding:5px;
+}
+
+#ustawienia
+{
+	display: flex;
+	flex-direction: row;
+	padding:5px;
+}
+
+#ustawienia p
+{
+	padding-left:5px;
+}
+
+#poleGry
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	border: 1px solid black;
+	min-height:800px;
+}
+
+.pojemniczek
+{
+	width: 250px;
+	height: 250px;
+	margin: 5px;
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+}
+
+.pojemniczek:hover
+{
+	background-color:#888;
+}
+
+.ukryte
+{
+	width: 250px;
+	height: 250px;
+	visibility: hidden;
+}
+
+.memor
+{
+	width: 100%;
+	height: 100%;
+}
+
+.form
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	align-items: left;
+}
+
+.form p
+{
+	margin: 4px;
+}

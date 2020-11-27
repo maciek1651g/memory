@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Gra w memory</title>
+		<link rel="Stylesheet" href="./style.css" type="text/css">
+		<script src="./menadzerGry.js"></script>
+		<script src="./menadzerGryKlasycznej.js"></script>
+		<script src="./menadzerDanych.js"></script>
+		<script src="./menadzerWynikow.js"></script>
+	</head>
+	<body>
+		<div id="kontener">
+			<h1>Gra w memory</h1>
+			<div id="ustawienia">
+				<p>Tryb gry:</p>
+					<div class="form">
+						<p>
+							<input type="radio" id="graKlasyczna" name="typGry" value="graKlasyczna" checked>
+							<label for="graKlasyczna">Gra klasyczna</label>
+						</p>
+						<p>
+							<input type="radio" id="graNaCzas" name="typGry" value="graNaCzas">
+							<label for="graNaCzas">Gra na czas</label>
+						</p>
+					</div>
+				<p>Poziom trudności:</p>
+					<div class="form">
+						<p>
+							<input type="radio" id="latwy" name="trudnoscGry" value="latwy" checked>
+							<label for="latwy">Łatwy</label>
+						</p>
+						<p>
+							<input type="radio" id="sredni" name="trudnoscGry" value="sredni">
+							<label for="sredni">Średni</label>
+						</p>
+						<p>
+							<input type="radio" id="trudny" name="trudnoscGry" value="trudny">
+							<label for="trudny">Trudny</label>
+						</p>
+					</div>
+					<input id="start_stop" type="button" value="Start" onclick="MenadzerGry.RozpocznijGre()"/>
+					<div id = "czas"></div>
+					<input type="button" value="Pokaż wyniki" onclick="MenadzerWynikow.odczytWynikow()"/>
+			</div>
+			<div id="poleGry">
+				
+			</div>
+		</div>
+	</body>
+</html>
