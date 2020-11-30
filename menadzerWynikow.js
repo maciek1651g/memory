@@ -5,7 +5,7 @@ class MenadzerWynikow
 		var dane = MenadzerDanych.odczyt();
 		if(dane!=NaN)
 		{
-			var tabela = "<table>"
+			var tabela = "<table class='tabela'>"
 			tabela += "<tr><th>ID</th><th>Nick</th><th>Tryb gry</th><th>Poziom Trudności</th><th>Czas</th></tr>"
 			for(var i=0;i<dane.length;i++)
 			{

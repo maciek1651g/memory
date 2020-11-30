@@ -1,20 +1,17 @@
-menago = 0
-poprzedniObiekt=0
-poprzedniPara=0
-licznik=0
-blokada = true
-czas=0
-stoper = 0
-
 class MenadzerGry
 {
 	static menago=0
+	static licznik=0
+	static blokada = true
+	static czas = 0
+	static stoper = 0
+	static poprzedniObiekt = 0
+	static poprzedniPara = 0
 	
 	constructor(typG, poziomT)
 	{
 		this.poziomTrudnosci = poziomT
 		this.typGry = typG
-		this.czas = 0
 		this.liczbaPar = 0
 		
 		if(poziomT==1)
@@ -23,14 +20,17 @@ class MenadzerGry
 			this.liczbaPar = 8
 		if(poziomT==3)
 			this.liczbaPar = 12
-		this.obrazy = MenadzerGry.pobierzObrazy(this.liczbaPar)
-		if(stoper!=0)
+		if(this.typGry==1)
+			this.obrazy = MenadzerGry.pobierzObrazy(this.liczbaPar,"MenadzerGryKlasycznej")
+		else
+			this.obrazy = MenadzerGry.pobierzObrazy(this.liczbaPar, "MenadzerGryLosowej")
+		if(MenadzerGry.stoper!=0)
 		{
-			clearInterval(stoper)
+			clearInterval(MenadzerGry.stoper)
 		}
-		czas=0
+		MenadzerGry.czas=0
 		MenadzerGry.startTime()
-		stoper = setInterval(MenadzerGry.startTime,1000)
+		MenadzerGry.stoper = setInterval(MenadzerGry.startTime,1000)
 	}
 	
 	rozlozObrazy()
@@ -44,9 +44,9 @@ class MenadzerGry
 	
 	static startTime() 
 	{
-		czas++
-		var m = MenadzerGry.checkTime(Math.floor(czas/60));
-		var s = MenadzerGry.checkTime(Math.round(czas%60));
+		MenadzerGry.czas++
+		var m = MenadzerGry.checkTime(Math.floor(MenadzerGry.czas/60));
+		var s = MenadzerGry.checkTime(Math.round(MenadzerGry.czas%60));
 		document.getElementById('czas').innerHTML = m + ":" + s;
 	}
 	
@@ -58,7 +58,10 @@ class MenadzerGry
 	
 	static stopGra()
 	{
-		clearInterval(stoper)
+		clearInterval(MenadzerGry.stoper)
+		MenadzerGry.poprzedniObiekt = 0
+		MenadzerGry.poprzedniPara = 0
+		MenadzerGry.licznik=0
 		document.getElementById("poleGry").innerHTML = ""
 		document.getElementById("start_stop").value = "Start"
 		document.getElementById("start_stop").onclick = MenadzerGry.RozpocznijGre
@@ -83,7 +86,7 @@ class MenadzerGry
 		}
 	}
 	
-	 static pobierzObrazy(ile)
+	 static pobierzObrazy(ile, klasaGry)
 	{
 		var tmp = MenadzerDanych.pobierzObrazy(ile)
 		var wynik = new Array()
@@ -92,9 +95,9 @@ class MenadzerGry
 		var mem = 1
 		for(var i=0;i<len;i++)
 		{
-			wynik.push("<div class='pojemniczek' onclick='MenadzerGry.klikniecieWDiva(this)' data-para='p"+(i+1)+"' id='m"+mem+"'><div class='ukryte'><img class='memor' src='"+tmp[i]+"' alt='Brak obrazu' /></div></div>")
+			wynik.push("<div class='pojemniczek' onclick='"+klasaGry+".klikniecieWDiva(this)' data-para='p"+(i+1)+"' id='m"+mem+"'><div class='ukryte'><img class='memor' src='"+tmp[i]+"' alt='Brak obrazu' /></div></div>")
 			mem++
-			wynik.push("<div class='pojemniczek' onclick='MenadzerGry.klikniecieWDiva(this)' data-para='p"+(i+1)+"' id='m"+mem+"'><div class='ukryte'><img class='memor' src='"+tmp[i]+"' alt='Brak obrazu' /></div></div>")
+			wynik.push("<div class='pojemniczek' onclick='"+klasaGry+".klikniecieWDiva(this)' data-para='p"+(i+1)+"' id='m"+mem+"'><div class='ukryte'><img class='memor' src='"+tmp[i]+"' alt='Brak obrazu' /></div></div>")
 			mem++
 		}
 		
@@ -103,7 +106,7 @@ class MenadzerGry
 	
 	static wygrana()
 	{
-		if (confirm("Wygrałeś!\nChcesz zapisać swój wynik?\nCzas: "+czas)) 
+		if (confirm("Wygrałeś!\nChcesz zapisać swój wynik?\nCzas: "+MenadzerGry.czas)) 
 		{
 			var nick = prompt("Wprowadź swój pseudonim.");
 			MenadzerGry.zapis(nick)
@@ -116,7 +119,7 @@ class MenadzerGry
 		{
 			var tryb = ""
 			var trudnosc = ""
-			if(menago.typGry==1)
+			if(MenadzerGry.menago.typGry==1)
 			{
 				tryb = "Gra klasyczna"
 			}
@@ -125,13 +128,13 @@ class MenadzerGry
 				tryb = "Gra na czas"
 			}
 			
-			if(menago.poziomTrudnosci==1)
+			if(MenadzerGry.menago.poziomTrudnosci==1)
 			{
 				trudnosc = "Łatwy"
 			}
 			else
 			{
-				if(menago.poziomTrudnosci==2)
+				if(MenadzerGry.menago.poziomTrudnosci==2)
 				{
 					trudnosc = "Średni"
 				}
@@ -141,7 +144,7 @@ class MenadzerGry
 				}
 			}
 			
-			MenadzerWynikow.zapis(nick, czas, tryb, trudnosc)
+			MenadzerWynikow.zapis(nick, MenadzerGry.czas, tryb, trudnosc)
 		}
 	}
 	
@@ -157,7 +160,7 @@ class MenadzerGry
 		}
 		else
 		{
-			//console.log("Gra na czas")
+			//console.log("Gra w losowanie")
 			x=2
 		}
 		
@@ -186,8 +189,10 @@ class MenadzerGry
 		document.getElementById("start_stop").value = "Stop"
 		document.getElementById("start_stop").onclick = MenadzerGry.stopGra
 		
-		menago = new MenadzerGry(x,y)
-		menago.rozlozObrazy()
+		MenadzerGry.menago = new MenadzerGry(x,y)
+		MenadzerGry.menago.rozlozObrazy()
+		if(x==2)
+			MenadzerGryLosowej.startGra()
 	}
 }
 

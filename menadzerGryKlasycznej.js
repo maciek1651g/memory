@@ -2,39 +2,39 @@ class MenadzerGryKlasycznej
 {
 	static klikniecieWDiva(element)
 	{
-		if(element.children[0].style.visibility != "visible" && blokada)
+		if(element.children[0].style.visibility != "visible" && MenadzerGry.blokada)
 		{
 			element.children[0].style.visibility = "visible"
 			var para = element.attributes[2].value
-			if(poprzedniPara!=0)
+			if(MenadzerGry.poprzedniPara!=0)
 			{
-				blokada = false
-				if(poprzedniPara==para)
+				MenadzerGry.blokada = false
+				if(MenadzerGry.poprzedniPara==para)
 				{
-					licznik++
-					poprzedniObiekt.onclick=""
+					MenadzerGry.licznik++
+					MenadzerGry.poprzedniObiekt.onclick=""
 					element.onclick=""
-					if(licznik==menago.liczbaPar)
+					if(MenadzerGry.licznik==MenadzerGry.menago.liczbaPar)
 					{
-						clearInterval(stoper)
+						clearInterval(MenadzerGry.stoper)
 						setTimeout(MenadzerGry.wygrana , 20);
 						document.getElementById("start_stop").value = "Start"
 						document.getElementById("start_stop").onclick = MenadzerGry.RozpocznijGre
-						licznik=0
+						MenadzerGry.licznik=0
 					}
 					
-					poprzedniObiekt=0
-					poprzedniPara=0
-					blokada=true
+					MenadzerGry.poprzedniObiekt=0
+					MenadzerGry.poprzedniPara=0
+					MenadzerGry.blokada=true
 				}
 				else
 				{
 					var f = function() {
-						poprzedniObiekt.children[0].style.visibility = "hidden";
+						MenadzerGry.poprzedniObiekt.children[0].style.visibility = "hidden";
 						element.children[0].style.visibility = "hidden";
-						poprzedniObiekt=0
-						poprzedniPara=0
-						blokada=true
+						MenadzerGry.poprzedniObiekt=0
+						MenadzerGry.poprzedniPara=0
+						MenadzerGry.blokada=true
 					}
 					
 					setTimeout(f , 300);
@@ -43,8 +43,8 @@ class MenadzerGryKlasycznej
 			}
 			else
 			{
-				poprzedniObiekt = element
-				poprzedniPara = para
+				MenadzerGry.poprzedniObiekt = element
+				MenadzerGry.poprzedniPara = para
 			}
 		}
 	}

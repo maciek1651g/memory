@@ -6,6 +6,7 @@
 		<link rel="Stylesheet" href="./style.css" type="text/css">
 		<script src="./menadzerGry.js"></script>
 		<script src="./menadzerGryKlasycznej.js"></script>
+		<script src="./menadzerGryLosowej.js"></script>
 		<script src="./menadzerDanych.js"></script>
 		<script src="./menadzerWynikow.js"></script>
 	</head>
@@ -20,8 +21,8 @@
 							<label for="graKlasyczna">Gra klasyczna</label>
 						</p>
 						<p>
-							<input type="radio" id="graNaCzas" name="typGry" value="graNaCzas">
-							<label for="graNaCzas">Gra na czas</label>
+							<input type="radio" id="graLosowa" name="typGry" value="graLosowa">
+							<label for="graLosowa">Gra w losowanie</label>
 						</p>
 					</div>
 				<p>Poziom trudności:</p>
@@ -40,8 +41,11 @@
 						</p>
 					</div>
 					<input id="start_stop" type="button" value="Start" onclick="MenadzerGry.RozpocznijGre()"/>
-					<div id = "czas"></div>
-					<input type="button" value="Pokaż wyniki" onclick="MenadzerWynikow.odczytWynikow()"/>
+					<div style="display:flex; flex-direction: column;">
+						<p>Czas:</p>
+						<div id = "czas">00:00</div>
+					</div>
+					<input id="pokaz_wyniki" type="button" value="Pokaż wyniki" onclick="MenadzerWynikow.odczytWynikow()"/>
 			</div>
 			<div id="poleGry">
 				
