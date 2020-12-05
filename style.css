@@ -1,3 +1,8 @@
+body
+{
+	background-image: url("1085.jpg");
+}
+
 #kontener
 {
 	display: flex;
@@ -8,6 +13,7 @@
 	border: 1px solid black;
 	text-align:center;
 	padding:5px;
+	background-color: white;
 }
 
 #ustawienia
@@ -15,6 +21,8 @@
 	display: flex;
 	flex-direction: row;
 	padding:5px;
+	background-color:#BB9A59;
+	border: 1px solid black;
 }
 
 #ustawienia p
@@ -29,6 +37,7 @@
 	justify-content: center;
 	border: 1px solid black;
 	min-height:500px;
+	background-color:#BB8937;
 }
 
 #czas
@@ -64,10 +73,11 @@
 	width: 250px;
 	height: 250px;
 	margin: 5px;
-	border: 1px solid black;
+	border: 2px solid black;
 	display: flex;
 	justify-content: center;
 	align-items:center;
+	background-color: #AAAAAA;
 }
 
 .pojemniczek:hover

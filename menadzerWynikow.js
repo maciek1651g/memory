@@ -2,7 +2,9 @@ class MenadzerWynikow
 {
 	static odczytWynikow()
 	{
+		MenadzerGry.stopGra();
 		var dane = MenadzerDanych.odczyt();
+
 		if(dane!=NaN)
 		{
 			var tabela = "<table class='tabela'>"

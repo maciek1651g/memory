@@ -73,6 +73,7 @@ class MenadzerGryLosowej
 						}
 					}
 					
+					MenadzerGry.poprzedniObiekt.style.border = "2px solid black"
 					MenadzerGry.poprzedniObiekt=0
 					MenadzerGry.poprzedniPara=0
 					MenadzerGry.blokada=true
@@ -81,6 +82,7 @@ class MenadzerGryLosowej
 				else
 				{
 					var f = function() {
+						MenadzerGry.poprzedniObiekt.style.border = "2px solid black"
 						MenadzerGry.poprzedniObiekt.children[0].style.visibility = "hidden";
 						element.children[0].style.visibility = "hidden";
 						MenadzerGry.poprzedniObiekt=0
@@ -97,6 +99,7 @@ class MenadzerGryLosowej
 				
 				MenadzerGry.poprzedniObiekt = element
 				MenadzerGry.poprzedniPara = para
+				element.style.border = "2px solid red"
 			}
 		}
 	}

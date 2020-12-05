@@ -24,7 +24,11 @@ class MenadzerDanych
 			xhttp.send();
 		}
 		
-		tabObrazow = JSON.parse(tabObrazow);
+		try{
+			tabObrazow = JSON.parse(tabObrazow);
+		}catch{
+			tabObrazow = NaN;
+		}
 		
 		return tabObrazow
 	}
@@ -53,6 +57,23 @@ class MenadzerDanych
 		return flaga
 	}
 	
+	// static async odczyt() {
+		// let response = await new Promise(resolve => {
+		   // var xhr = new XMLHttpRequest();
+		   // xhr.open("GET", "kontrolerOdczytu.php", true);
+		   // xhr.onload = function(e) {
+			 // resolve(xhr.response);
+		   // };
+		   // xhr.onerror = function () {
+			 // resolve(undefined);
+			 // console.error("** An error occurred during the XMLHttpRequest");
+		   // };
+		   // xhr.send();
+		// }) 
+		
+		// JSON.parse(response);
+	// }
+	
 	static odczyt()
 	{
 		var xhttp = new XMLHttpRequest();
@@ -73,8 +94,12 @@ class MenadzerDanych
 		xhttp.open("GET", "kontrolerOdczytu.php", false);
 		xhttp.send();
 		
-		tekst = JSON.parse(tekst);
+		try{
+			tekst = JSON.parse(tekst);
+		}catch{
+			tekst = NaN
+		}
+		
 		return tekst
 	}
 }
-
